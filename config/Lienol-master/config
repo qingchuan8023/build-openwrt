@@ -181,13 +181,22 @@ CONFIG_ARCH="x86_64"
 #
 # Target Images
 #
-# CONFIG_TARGET_ROOTFS_INITRAMFS is not set
+CONFIG_TARGET_ROOTFS_INITRAMFS=y
+CONFIG_TARGET_INITRAMFS_COMPRESSION_NONE=y
+# CONFIG_TARGET_INITRAMFS_COMPRESSION_GZIP is not set
+# CONFIG_TARGET_INITRAMFS_COMPRESSION_BZIP2 is not set
+# CONFIG_TARGET_INITRAMFS_COMPRESSION_LZMA is not set
+# CONFIG_TARGET_INITRAMFS_COMPRESSION_LZO is not set
+# CONFIG_TARGET_INITRAMFS_COMPRESSION_LZ4 is not set
+# CONFIG_TARGET_INITRAMFS_COMPRESSION_XZ is not set
+# CONFIG_TARGET_INITRAMFS_COMPRESSION_ZSTD is not set
 CONFIG_EXTERNAL_CPIO=""
+# CONFIG_TARGET_INITRAMFS_FORCE is not set
 
 #
 # Root filesystem archives
 #
-# CONFIG_TARGET_ROOTFS_CPIOGZ is not set
+CONFIG_TARGET_ROOTFS_CPIOGZ=y
 CONFIG_TARGET_ROOTFS_TARGZ=y
 
 #
@@ -209,12 +218,12 @@ CONFIG_GRUB_EFI_IMAGES=y
 CONFIG_GRUB_CONSOLE=y
 CONFIG_GRUB_SERIAL="ttyS0"
 CONFIG_GRUB_BAUDRATE=115200
-# CONFIG_GRUB_FLOWCONTROL is not set
+CONFIG_GRUB_FLOWCONTROL=y
 CONFIG_GRUB_BOOTOPTS=""
 CONFIG_GRUB_TIMEOUT="0"
 CONFIG_GRUB_TITLE="OpenWrt"
 CONFIG_ISO_IMAGES=y
-# CONFIG_VDI_IMAGES is not set
+CONFIG_VDI_IMAGES=y
 CONFIG_VMDK_IMAGES=y
 CONFIG_VHDX_IMAGES=y
 CONFIG_TARGET_IMAGES_GZIP=y
@@ -222,10 +231,10 @@ CONFIG_TARGET_IMAGES_GZIP=y
 #
 # Image Options
 #
-CONFIG_TARGET_KERNEL_PARTSIZE=215
-CONFIG_TARGET_ROOTFS_PARTSIZE=512
+CONFIG_TARGET_KERNEL_PARTSIZE=16
+CONFIG_TARGET_ROOTFS_PARTSIZE=160
 CONFIG_TARGET_ROOTFS_PARTNAME=""
-# CONFIG_TARGET_ROOTFS_PERSIST_VAR is not set
+CONFIG_TARGET_ROOTFS_PERSIST_VAR=y
 # end of Target Images
 
 # CONFIG_EXPERIMENTAL is not set
@@ -507,7 +516,7 @@ CONFIG_FEED_routing=y
 CONFIG_FEED_telephony=y
 CONFIG_FEED_lienol=y
 CONFIG_FEED_other=y
-CONFIG_FEED_amlogic=y
+CONFIG_FEED_alist=y
 
 #
 # Base system
@@ -1877,7 +1886,7 @@ CONFIG_PACKAGE_bnx2-firmware=y
 CONFIG_PACKAGE_brcmfmac-firmware-43602a1-pcie=y
 # CONFIG_PACKAGE_brcmfmac-firmware-4366b1-pcie is not set
 # CONFIG_PACKAGE_brcmfmac-firmware-4366c0-pcie is not set
-# CONFIG_PACKAGE_brcmfmac-firmware-usb is not set
+CONFIG_PACKAGE_brcmfmac-firmware-usb=y
 # CONFIG_PACKAGE_brcmsmac-firmware is not set
 # CONFIG_PACKAGE_carl9170-firmware is not set
 # CONFIG_PACKAGE_cypress-firmware-43012-sdio is not set
@@ -1993,10 +2002,6 @@ CONFIG_PACKAGE_wireless-regdb=y
 # CONFIG_PACKAGE_dejavu-fonts-ttf-DejaVuSerifCondensed-Italic is not set
 # end of DejaVu
 # end of Fonts
-
-#
-# Kernel
-#
 
 #
 # Kernel modules
@@ -2633,7 +2638,7 @@ CONFIG_PACKAGE_kmod-button-hotplug=y
 # CONFIG_PACKAGE_kmod-keys-trusted is not set
 # CONFIG_PACKAGE_kmod-lp is not set
 # CONFIG_PACKAGE_kmod-meraki-mx100 is not set
-# CONFIG_PACKAGE_kmod-mmc is not set
+CONFIG_PACKAGE_kmod-mmc=y
 # CONFIG_PACKAGE_kmod-mtdoops is not set
 # CONFIG_PACKAGE_kmod-mtdram is not set
 # CONFIG_PACKAGE_kmod-mtdtests is not set
@@ -2880,9 +2885,13 @@ CONFIG_PACKAGE_kmod-ath9k-common=y
 CONFIG_PACKAGE_kmod-ath9k-htc=y
 # CONFIG_PACKAGE_kmod-b43 is not set
 # CONFIG_PACKAGE_kmod-b43legacy is not set
-# CONFIG_PACKAGE_kmod-brcmfmac is not set
+CONFIG_PACKAGE_kmod-brcmfmac=y
+CONFIG_BRCMFMAC_SDIO=y
+CONFIG_BRCMFMAC_USB=y
+CONFIG_BRCMFMAC_PCIE=y
 # CONFIG_PACKAGE_kmod-brcmsmac is not set
-# CONFIG_PACKAGE_kmod-brcmutil is not set
+CONFIG_PACKAGE_kmod-brcmutil=y
+# CONFIG_PACKAGE_BRCM80211_DEBUG is not set
 # CONFIG_PACKAGE_kmod-carl9170 is not set
 CONFIG_PACKAGE_kmod-cfg80211=y
 # CONFIG_PACKAGE_CFG80211_TESTMODE is not set
@@ -3294,6 +3303,7 @@ CONFIG_PACKAGE_lua=y
 # CONFIG_PACKAGE_python3-sepolgen is not set
 # CONFIG_PACKAGE_python3-sepolicy is not set
 # CONFIG_PACKAGE_python3-service-identity is not set
+# CONFIG_PACKAGE_python3-setools is not set
 # CONFIG_PACKAGE_python3-setuptools is not set
 # CONFIG_PACKAGE_python3-simplejson is not set
 # CONFIG_PACKAGE_python3-six is not set
@@ -4232,7 +4242,6 @@ CONFIG_PACKAGE_libgmp=y
 # CONFIG_PACKAGE_libinotifytools is not set
 # CONFIG_PACKAGE_libinput is not set
 # CONFIG_PACKAGE_libintl-full is not set
-# CONFIG_PACKAGE_libipfs-http-client is not set
 # CONFIG_PACKAGE_libiw is not set
 CONFIG_PACKAGE_libiwinfo=y
 # CONFIG_PACKAGE_libjpeg-turbo is not set
@@ -4324,10 +4333,10 @@ CONFIG_PACKAGE_libnl-tiny=y
 # CONFIG_PACKAGE_libpcap is not set
 # CONFIG_PACKAGE_libpci is not set
 # CONFIG_PACKAGE_libpciaccess is not set
-CONFIG_PACKAGE_libpcre=y
-CONFIG_PCRE_JIT_ENABLED=y
+# CONFIG_PACKAGE_libpcre is not set
 # CONFIG_PACKAGE_libpcre16 is not set
-# CONFIG_PACKAGE_libpcre2 is not set
+CONFIG_PACKAGE_libpcre2=y
+CONFIG_PCRE2_JIT_ENABLED=y
 # CONFIG_PACKAGE_libpcre2-16 is not set
 # CONFIG_PACKAGE_libpcre2-32 is not set
 # CONFIG_PACKAGE_libpcre32 is not set
@@ -4584,9 +4593,11 @@ CONFIG_PACKAGE_luci-mod-system=y
 # CONFIG_PACKAGE_luci-app-acme is not set
 # CONFIG_PACKAGE_luci-app-adblock is not set
 # CONFIG_PACKAGE_luci-app-adbyby-plus is not set
-CONFIG_PACKAGE_luci-app-adguardhome=y
+# CONFIG_PACKAGE_luci-app-adguardhome is not set
 # CONFIG_PACKAGE_luci-app-advanced-reboot is not set
 # CONFIG_PACKAGE_luci-app-ahcp is not set
+# CONFIG_PACKAGE_luci-app-alist is not set
+# CONFIG_PACKAGE_luci-app-apinger is not set
 # CONFIG_PACKAGE_luci-app-aria2 is not set
 # CONFIG_PACKAGE_luci-app-arpbind is not set
 # CONFIG_PACKAGE_luci-app-attendedsysupgrade is not set
@@ -4597,7 +4608,6 @@ CONFIG_PACKAGE_luci-app-adguardhome=y
 # CONFIG_PACKAGE_luci-app-bcp38 is not set
 # CONFIG_PACKAGE_luci-app-bird1-ipv4 is not set
 # CONFIG_PACKAGE_luci-app-bird1-ipv6 is not set
-# CONFIG_PACKAGE_luci-app-bmx6 is not set
 # CONFIG_PACKAGE_luci-app-bmx7 is not set
 # CONFIG_PACKAGE_luci-app-cifs-mount is not set
 # CONFIG_PACKAGE_luci-app-cjdns is not set
@@ -4659,6 +4669,8 @@ CONFIG_PACKAGE_luci-app-firewall=y
 # CONFIG_PACKAGE_luci-app-olsr-viz is not set
 # CONFIG_PACKAGE_luci-app-omcproxy is not set
 # CONFIG_PACKAGE_luci-app-openvpn is not set
+# CONFIG_PACKAGE_luci-app-openvpn-client is not set
+# CONFIG_PACKAGE_luci-app-openvpn-server is not set
 # CONFIG_PACKAGE_luci-app-openwisp is not set
 CONFIG_PACKAGE_luci-app-opkg=y
 # CONFIG_PACKAGE_luci-app-p910nd is not set
@@ -4771,13 +4783,11 @@ CONFIG_PACKAGE_luci-proto-ppp=y
 # 6. Libraries
 #
 CONFIG_PACKAGE_luci-lib-base=y
-# CONFIG_PACKAGE_luci-lib-dracula is not set
 # CONFIG_PACKAGE_luci-lib-httpclient is not set
 # CONFIG_PACKAGE_luci-lib-httpprotoutils is not set
 CONFIG_PACKAGE_luci-lib-ip=y
 # CONFIG_PACKAGE_luci-lib-ipkg is not set
 # CONFIG_PACKAGE_luci-lib-iptparser is not set
-# CONFIG_PACKAGE_luci-lib-jquery-1-4 is not set
 # CONFIG_PACKAGE_luci-lib-json is not set
 CONFIG_PACKAGE_luci-lib-jsonc=y
 CONFIG_PACKAGE_luci-lib-nixio=y
@@ -5539,7 +5549,6 @@ CONFIG_PACKAGE_p910nd=y
 # CONFIG_PACKAGE_bird2 is not set
 # CONFIG_PACKAGE_bird2c is not set
 # CONFIG_PACKAGE_bird2cl is not set
-# CONFIG_PACKAGE_bmx6 is not set
 # CONFIG_PACKAGE_bmx7 is not set
 # CONFIG_PACKAGE_cjdns is not set
 # CONFIG_PACKAGE_cjdns-tests is not set
@@ -5707,6 +5716,7 @@ CONFIG_PACKAGE_p910nd=y
 # CONFIG_PACKAGE_eoip is not set
 # CONFIG_PACKAGE_fastd is not set
 # CONFIG_PACKAGE_libreswan is not set
+# CONFIG_PACKAGE_netbird is not set
 # CONFIG_PACKAGE_ocserv is not set
 # CONFIG_PACKAGE_openconnect is not set
 # CONFIG_PACKAGE_openfortivpn is not set
@@ -5764,6 +5774,7 @@ CONFIG_PACKAGE_p910nd=y
 #
 # Web Servers/Proxies
 #
+# CONFIG_PACKAGE_alist is not set
 # CONFIG_PACKAGE_apache is not set
 CONFIG_PACKAGE_cgi-io=y
 # CONFIG_PACKAGE_clamav is not set
@@ -5896,6 +5907,7 @@ CONFIG_DRIVER_11AC_SUPPORT=y
 # CONFIG_PACKAGE_apcupsd is not set
 # CONFIG_PACKAGE_apcupsd-cgi is not set
 # CONFIG_PACKAGE_apinger is not set
+# CONFIG_PACKAGE_apinger-rrd is not set
 # CONFIG_PACKAGE_atlas-probe is not set
 # CONFIG_PACKAGE_atlas-sw-probe is not set
 # CONFIG_PACKAGE_atlas-sw-probe-rpc is not set
@@ -6142,6 +6154,8 @@ CONFIG_PACKAGE_SAMBA_MAX_DEBUG_LEVEL=-1
 # CONFIG_PACKAGE_tor-fw-helper is not set
 # CONFIG_PACKAGE_trafficshaper is not set
 # CONFIG_PACKAGE_travelmate is not set
+# CONFIG_PACKAGE_tunneldigger is not set
+# CONFIG_PACKAGE_tunneldigger-broker is not set
 # CONFIG_PACKAGE_u2pnpd is not set
 # CONFIG_PACKAGE_uacme is not set
 # CONFIG_PACKAGE_uacme-ualpn is not set
@@ -6464,6 +6478,23 @@ CONFIG_PACKAGE_sysfsutils=y
 # end of Terminal
 
 #
+# Time Zone info
+#
+# CONFIG_PACKAGE_zoneinfo-africa is not set
+# CONFIG_PACKAGE_zoneinfo-all is not set
+# CONFIG_PACKAGE_zoneinfo-america is not set
+# CONFIG_PACKAGE_zoneinfo-asia is not set
+# CONFIG_PACKAGE_zoneinfo-atlantic is not set
+# CONFIG_PACKAGE_zoneinfo-australia-nz is not set
+# CONFIG_PACKAGE_zoneinfo-core is not set
+# CONFIG_PACKAGE_zoneinfo-europe is not set
+# CONFIG_PACKAGE_zoneinfo-indian is not set
+# CONFIG_PACKAGE_zoneinfo-pacific is not set
+# CONFIG_PACKAGE_zoneinfo-poles is not set
+# CONFIG_PACKAGE_zoneinfo-simple is not set
+# end of Time Zone info
+
+#
 # Virtualization
 #
 # CONFIG_PACKAGE_qemu-arm-softmmu is not set
@@ -6479,24 +6510,6 @@ CONFIG_PACKAGE_sysfsutils=y
 # CONFIG_PACKAGE_qemu-x86_64-softmmu is not set
 # CONFIG_PACKAGE_virtio-console-helper is not set
 # end of Virtualization
-
-#
-# Zoneinfo
-#
-# CONFIG_PACKAGE_zoneinfo-africa is not set
-# CONFIG_PACKAGE_zoneinfo-all is not set
-# CONFIG_PACKAGE_zoneinfo-asia is not set
-# CONFIG_PACKAGE_zoneinfo-atlantic is not set
-# CONFIG_PACKAGE_zoneinfo-australia-nz is not set
-# CONFIG_PACKAGE_zoneinfo-core is not set
-# CONFIG_PACKAGE_zoneinfo-europe is not set
-# CONFIG_PACKAGE_zoneinfo-india is not set
-# CONFIG_PACKAGE_zoneinfo-northamerica is not set
-# CONFIG_PACKAGE_zoneinfo-pacific is not set
-# CONFIG_PACKAGE_zoneinfo-poles is not set
-# CONFIG_PACKAGE_zoneinfo-simple is not set
-# CONFIG_PACKAGE_zoneinfo-southamerica is not set
-# end of Zoneinfo
 
 #
 # libimobiledevice
@@ -6672,7 +6685,6 @@ CONFIG_PACKAGE_bc=y
 # CONFIG_PACKAGE_inotifywatch is not set
 # CONFIG_PACKAGE_io is not set
 # CONFIG_PACKAGE_ipcs is not set
-# CONFIG_PACKAGE_ipfs-http-client-tests is not set
 # CONFIG_PACKAGE_irqbalance is not set
 # CONFIG_PACKAGE_iwcap is not set
 CONFIG_PACKAGE_iwinfo=y
@@ -6714,6 +6726,7 @@ CONFIG_PACKAGE_lm-sensors=y
 # CONFIG_PACKAGE_mc-skins is not set
 # CONFIG_PACKAGE_mcookie is not set
 # CONFIG_PACKAGE_mdio-tools is not set
+# CONFIG_PACKAGE_mhz is not set
 # CONFIG_PACKAGE_micrond is not set
 # CONFIG_PACKAGE_miniflux is not set
 # CONFIG_PACKAGE_mmc-utils is not set
@@ -6797,10 +6810,14 @@ CONFIG_PACKAGE_openssl-util=y
 # CONFIG_PACKAGE_sed is not set
 # CONFIG_PACKAGE_selinux-audit2allow is not set
 # CONFIG_PACKAGE_selinux-chcat is not set
-# CONFIG_PACKAGE_selinux-semanage is not set
 # CONFIG_PACKAGE_semodule-utils is not set
 # CONFIG_PACKAGE_serdisplib-tools is not set
-# CONFIG_PACKAGE_setools is not set
+# CONFIG_PACKAGE_setools-sechecker is not set
+# CONFIG_PACKAGE_setools-sediff is not set
+# CONFIG_PACKAGE_setools-sedta is not set
+# CONFIG_PACKAGE_setools-seinfo is not set
+# CONFIG_PACKAGE_setools-seinfoflow is not set
+# CONFIG_PACKAGE_setools-sesearch is not set
 # CONFIG_PACKAGE_setserial is not set
 # CONFIG_PACKAGE_sexpect is not set
 # CONFIG_PACKAGE_shadow-utils is not set
